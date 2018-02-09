@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mfam.agroandroid.GroupActivity">
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="220sp"
+        android:layout_height="100sp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="120dp"
+        android:onClick="zern"
+        android:text="Зерновые"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="220sp"
+        android:layout_height="100sp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginTop="120dp"
+        android:onClick="drob"
+        android:text="Дробленка"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="220sp"
+        android:layout_height="100sp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="40dp"
+        android:onClick="gran"
+        android:text="Гранула"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn1" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="220sp"
+        android:layout_height="98dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginTop="40dp"
+        android:onClick="smesZern"
+        android:text="Смеси зерновые"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
+
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="220sp"
+        android:layout_height="100sp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="40dp"
+        android:onClick="bestMix"
+        android:text="Best mix"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn3" />
+
+    <Button
+        android:id="@+id/btn6"
+        android:layout_width="220dp"
+        android:layout_height="100sp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginTop="40dp"
+        android:onClick="olkar"
+        android:text="Олкар"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn4" />
+
+    <Button
+        android:id="@+id/btn7"
+        android:layout_width="220sp"
+        android:layout_height="100sp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="40dp"
+        android:onClick="krug"
+        android:text="Круг"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn5" />
+
+    <Button
+        android:id="@+id/btn8"
+        android:layout_width="220sp"
+        android:layout_height="100sp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginTop="40dp"
+        android:onClick="kramar"
+        android:text="Крамар"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn6" />
+
+    <Button
+        android:id="@+id/btn9"
+        android:layout_width="220sp"
+        android:layout_height="100sp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="40dp"
+        android:onClick="prod"
+        android:text="Продукты"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn7" />
+
+    <Button
+        android:id="@+id/btn10"
+        android:layout_width="220sp"
+        android:layout_height="100sp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginTop="40dp"
+        android:onClick="raz"
+        android:text="Разное"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn8" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Группы"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="150dp"
+        android:layout_marginStart="150dp"
+        android:onClick="summDay"
+        android:text="Сумма за день"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/summDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="160dp"
+        android:layout_marginStart="170dp"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button20" />
+
+    <Button
+        android:id="@+id/basketBtn"
+        android:layout_width="182dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="150dp"
+        android:layout_marginEnd="150dp"
+        android:onClick="goToBasket"
+        android:text="Корзина"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/sumForDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="200dp"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button20"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="28dp"
+        android:onClick="exit"
+        android:text="Выход"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sellerTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="41dp"
+        android:layout_marginTop="29dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

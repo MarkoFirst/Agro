@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Booking">
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <Pane prefHeight="1080.0" prefWidth="782.0">
+            <children>
+            <Pane fx:id="groupPane" layoutX="34.0" layoutY="93.0" prefHeight="965.0" prefWidth="729.0" style="-fx-background-color: grey;">
+               <children>
+                  <Button layoutX="39.0" layoutY="20.0" mnemonicParsing="false" onAction="#zernBut" prefHeight="160.0" prefWidth="300.0" text="Зерновые">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="387.0" layoutY="20.0" mnemonicParsing="false" onAction="#drobBut" prefHeight="160.0" prefWidth="300.0" text="Дробленка">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="389.0" layoutY="200.0" mnemonicParsing="false" onAction="#smesBut" prefHeight="160.0" prefWidth="300.0" text="Смеси зерн.">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="41.0" layoutY="200.0" mnemonicParsing="false" onAction="#granBut" prefHeight="160.0" prefWidth="300.0" text="Гранула">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="389.0" layoutY="380.0" mnemonicParsing="false" onAction="#olkarBut" prefHeight="160.0" prefWidth="300.0" text="Олкар">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="41.0" layoutY="380.0" mnemonicParsing="false" onAction="#bestMixBut" prefHeight="160.0" prefWidth="300.0" text="Best mix">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="41.0" layoutY="560.0" mnemonicParsing="false" onAction="#krugBut" prefHeight="160.0" prefWidth="300.0" text="Круг">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="389.0" layoutY="560.0" mnemonicParsing="false" onAction="#kramBut" prefHeight="160.0" prefWidth="300.0" text="Крамар">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="41.0" layoutY="740.0" mnemonicParsing="false" onAction="#prodBut" prefHeight="160.0" prefWidth="300.0" text="Продукты">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="389.0" layoutY="740.0" mnemonicParsing="false" onAction="#razBut" prefHeight="160.0" prefWidth="300.0" text="Разное">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Button>
+               </children></Pane>
+            <Pane fx:id="namePane" layoutX="33.0" layoutY="94.0" prefHeight="965.0" prefWidth="729.0" style="-fx-background-color: grey;" visible="false">
+               <children>
+                  <Button fx:id="b1" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="42.0" mnemonicParsing="false" onAction="#b1Act" prefHeight="100.0" prefWidth="220.0" text="Button" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b2" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="42.0" mnemonicParsing="false" onAction="#b2Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b3" alignment="CENTER" contentDisplay="CENTER" layoutX="488.0" layoutY="42.0" mnemonicParsing="false" onAction="#b3Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b6" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="153.0" mnemonicParsing="false" onAction="#b6Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b5" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="153.0" mnemonicParsing="false" onAction="#b5Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b4" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="153.0" mnemonicParsing="false" onAction="#b4Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b10" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="376.0" mnemonicParsing="false" onAction="#b10Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b11" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="376.0" mnemonicParsing="false" onAction="#b11Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b12" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="376.0" mnemonicParsing="false" onAction="#b12Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b9" alignment="CENTER" contentDisplay="CENTER" layoutX="488.0" layoutY="265.0" mnemonicParsing="false" onAction="#b9Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b8" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="265.0" mnemonicParsing="false" onAction="#b8Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b7" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="265.0" mnemonicParsing="false" onAction="#b7Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b19" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="712.0" mnemonicParsing="false" onAction="#b19Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b20" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="712.0" mnemonicParsing="false" onAction="#b20Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b21" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="712.0" mnemonicParsing="false" onAction="#b21Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b24" alignment="CENTER" contentDisplay="CENTER" layoutX="486.0" layoutY="823.0" mnemonicParsing="false" onAction="#b24Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b23" alignment="CENTER" contentDisplay="CENTER" layoutX="253.0" layoutY="823.0" mnemonicParsing="false" onAction="#b23Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b22" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="823.0" mnemonicParsing="false" onAction="#b22Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b16" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="600.0" mnemonicParsing="false" onAction="#b16Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b17" alignment="CENTER" contentDisplay="CENTER" layoutX="253.0" layoutY="600.0" mnemonicParsing="false" onAction="#b17Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b18" alignment="CENTER" contentDisplay="CENTER" layoutX="486.0" layoutY="600.0" mnemonicParsing="false" onAction="#b18Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b15" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="489.0" mnemonicParsing="false" onAction="#b15Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b14" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="489.0" mnemonicParsing="false" onAction="#b14Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="b13" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="489.0" mnemonicParsing="false" onAction="#b13Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutY="-1.0" mnemonicParsing="false" onAction="#backToStage0" prefHeight="31.0" prefWidth="62.0" text="Назад" />
+               </children>
+            </Pane>
+            <Pane fx:id="modifyPane" layoutX="34.0" layoutY="93.0" prefHeight="965.0" prefWidth="729.0" style="-fx-background-color: grey;" visible="false">
+               <children>
+                  <Button layoutX="85.0" layoutY="316.0" mnemonicParsing="false" onAction="#cancel" text="Отмена">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="391.0" layoutY="316.0" mnemonicParsing="false" onAction="#addToBasket" text="Добавить в корзину">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Pane layoutX="85.0" layoutY="71.0" prefHeight="200.0" prefWidth="560.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label fx:id="nameLabel" alignment="CENTER" layoutX="130.0" layoutY="28.0" prefHeight="38.0" prefWidth="300.0" text="Label">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="weightLabel" layoutX="67.0" layoutY="112.0" prefHeight="21.0" prefWidth="186.0" text="Label">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="newWeightTF" layoutX="321.0" layoutY="111.0" />
+                        <CheckBox fx:id="mishCB" layoutX="368.0" layoutY="154.0" mnemonicParsing="false" text="в мешках" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="basketPane" layoutX="34.0" layoutY="93.0" prefHeight="965.0" prefWidth="729.0" style="-fx-background-color: grey;" visible="false">
+               <children>
+                  <TableView fx:id="basketTable" layoutX="16.0" layoutY="42.0" prefHeight="568.0" prefWidth="701.0">
+                    <columns>
+                      <TableColumn fx:id="basketName" prefWidth="306.0" text="Наименование" />
+                      <TableColumn fx:id="basketWeight" prefWidth="207.0" text="Вес / шт." />
+                        <TableColumn fx:id="basketCost" prefWidth="187.0" text="Цена" />
+                    </columns>
+                  </TableView>
+                  <Button layoutY="-1.0" mnemonicParsing="false" onAction="#backOfBasket" prefHeight="31.0" prefWidth="62.0" text="Назад" />
+                  <Button layoutX="429.0" layoutY="742.0" mnemonicParsing="false" onAction="#createBooking" prefHeight="19.0" prefWidth="265.0" text="Оформить заказ">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="311.0" layoutY="635.0" mnemonicParsing="false" onAction="#resumeBasket" text="Аннулировать" />
+                  <Label fx:id="allPrice" alignment="CENTER" contentDisplay="CENTER" layoutX="531.0" layoutY="631.0" prefHeight="39.0" prefWidth="186.0" text="Сумма" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="31.0" layoutY="635.0" mnemonicParsing="false" onAction="#skidActive" text="Скидка" />
+                  <Pane fx:id="skidPane" layoutX="31.0" layoutY="699.0" prefHeight="108.0" prefWidth="300.0" visible="false">
+                     <children>
+                        <TextField fx:id="skidTF" layoutX="22.0" layoutY="17.0" prefHeight="31.0" prefWidth="152.0" />
+                        <ChoiceBox fx:id="skidCB" layoutX="184.0" layoutY="17.0" prefHeight="31.0" prefWidth="95.0" />
+                        <Button layoutX="111.0" layoutY="63.0" mnemonicParsing="false" onAction="#skidOk" text="Принять" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Button fx:id="basketBut" layoutX="684.0" layoutY="36.0" mnemonicParsing="false" onAction="#openBasket" text="Корзина" />
+                <Button layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#menu" text="Меню" />
+            </children>
+        </Pane>
+    </children>
+</GridPane>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Add">
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <Pane prefHeight="1080.0" prefWidth="864.0">
+         <children>
+             <Button layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#menu" text="Меню" />
+            <Pane fx:id="pane1" layoutX="82.0" layoutY="149.0" prefHeight="59.0" prefWidth="701.0">
+               <children>
+                  <ChoiceBox fx:id="groupChoice" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="180.0" />
+                  <ChoiceBox fx:id="nameChoice" layoutX="209.0" layoutY="14.0" prefHeight="31.0" prefWidth="180.0" />
+                  <ChoiceBox fx:id="placeChoice" layoutX="407.0" layoutY="14.0" prefHeight="31.0" prefWidth="138.0" />
+                  <TextField fx:id="amount" layoutX="559.0" layoutY="14.0" prefHeight="31.0" prefWidth="128.0" />
+                  <TextField fx:id="newNameTF" layoutX="206.0" layoutY="14.0" visible="false" />
+               </children>
+            </Pane>
+            <Pane layoutX="82.0" layoutY="239.0" prefHeight="59.0" prefWidth="701.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#next" text="Еще">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
+                  <Button layoutX="578.0" layoutY="4.0" mnemonicParsing="false" onAction="#done" text="Готово">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
+                  <Button layoutX="251.0" layoutY="4.0" mnemonicParsing="false" onAction="#changePrice" text="Изменить цену">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Label layoutX="154.0" layoutY="114.0" text="Группа">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="299.0" layoutY="114.0" text="Наименование">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="525.0" layoutY="114.0" text="Место">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="641.0" layoutY="114.0" text="Количество">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="783.0" layoutY="164.0" text="кг / шт">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Pane fx:id="pricePane" layoutX="199.0" layoutY="298.0" prefHeight="281.0" prefWidth="446.0" visible="false">
+               <children>
+                  <TextField fx:id="priceInTF" layoutX="204.0" layoutY="36.0" />
+                  <TextField fx:id="priceOutTF" layoutX="204.0" layoutY="100.0" />
+                  <Label layoutX="42.0" layoutY="41.0" text="Цена приход" />
+                  <Label layoutX="42.0" layoutY="105.0" text="Цена розница за кг" />
+                  <Button layoutX="322.0" layoutY="212.0" mnemonicParsing="false" onAction="#priceDone" text="Готово" />
+                  <Label layoutX="42.0" layoutY="169.0" text="Цена в мешках за кг" />
+                  <TextField fx:id="priceMeshTF" layoutX="204.0" layoutY="164.0" />
+               </children>
+            </Pane>
+         </children></Pane>
+    </children>
+</GridPane>
