@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -16,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Booking">
+<GridPane alignment="center" hgap="10" prefHeight="720.0" prefWidth="792.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Booking">
     <columnConstraints>
         <ColumnConstraints />
         <ColumnConstraints />
@@ -28,185 +25,185 @@
     <children>
         <Pane prefHeight="1080.0" prefWidth="782.0">
             <children>
-            <Pane fx:id="groupPane" layoutX="34.0" layoutY="93.0" prefHeight="965.0" prefWidth="729.0" style="-fx-background-color: grey;">
+            <Pane fx:id="groupPane" layoutX="34.0" layoutY="93.0" prefHeight="592.0" prefWidth="729.0" style="-fx-background-color: grey;">
                <children>
-                  <Button layoutX="39.0" layoutY="20.0" mnemonicParsing="false" onAction="#zernBut" prefHeight="160.0" prefWidth="300.0" text="Зерновые">
+                  <Button layoutX="153.0" layoutY="51.0" mnemonicParsing="false" onAction="#zernBut" prefHeight="80.0" prefWidth="200.0" text="Зерновые">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="387.0" layoutY="20.0" mnemonicParsing="false" onAction="#drobBut" prefHeight="160.0" prefWidth="300.0" text="Дробленка">
+                  <Button layoutX="375.0" layoutY="51.0" mnemonicParsing="false" onAction="#drobBut" prefHeight="80.0" prefWidth="200.0" text="Дробленка">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="389.0" layoutY="200.0" mnemonicParsing="false" onAction="#smesBut" prefHeight="160.0" prefWidth="300.0" text="Смеси зерн.">
+                  <Button layoutX="377.0" layoutY="151.0" mnemonicParsing="false" onAction="#smesBut" prefHeight="80.0" prefWidth="200.0" text="Смеси зерн.">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="200.0" mnemonicParsing="false" onAction="#granBut" prefHeight="160.0" prefWidth="300.0" text="Гранула">
+                  <Button layoutX="153.0" layoutY="151.0" mnemonicParsing="false" onAction="#granBut" prefHeight="80.0" prefWidth="200.0" text="Гранула">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="389.0" layoutY="380.0" mnemonicParsing="false" onAction="#olkarBut" prefHeight="160.0" prefWidth="300.0" text="Олкар">
+                  <Button layoutX="375.0" layoutY="254.0" mnemonicParsing="false" onAction="#olkarBut" prefHeight="80.0" prefWidth="200.0" text="Олкар">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="380.0" mnemonicParsing="false" onAction="#bestMixBut" prefHeight="160.0" prefWidth="300.0" text="Best mix">
+                  <Button layoutX="153.0" layoutY="254.0" mnemonicParsing="false" onAction="#bestMixBut" prefHeight="80.0" prefWidth="200.0" text="Best mix">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="560.0" mnemonicParsing="false" onAction="#krugBut" prefHeight="160.0" prefWidth="300.0" text="Круг">
+                  <Button layoutX="153.0" layoutY="359.0" mnemonicParsing="false" onAction="#krugBut" prefHeight="80.0" prefWidth="200.0" text="Круг">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="389.0" layoutY="560.0" mnemonicParsing="false" onAction="#kramBut" prefHeight="160.0" prefWidth="300.0" text="Крамар">
+                  <Button layoutX="375.0" layoutY="359.0" mnemonicParsing="false" onAction="#kramBut" prefHeight="80.0" prefWidth="200.0" text="Крамар">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="740.0" mnemonicParsing="false" onAction="#prodBut" prefHeight="160.0" prefWidth="300.0" text="Продукты">
+                  <Button layoutX="153.0" layoutY="461.0" mnemonicParsing="false" onAction="#prodBut" prefHeight="80.0" prefWidth="200.0" text="Продукты">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="389.0" layoutY="740.0" mnemonicParsing="false" onAction="#razBut" prefHeight="160.0" prefWidth="300.0" text="Разное">
+                  <Button layoutX="375.0" layoutY="461.0" mnemonicParsing="false" onAction="#razBut" prefHeight="80.0" prefWidth="200.0" text="Разное">
                      <font>
-                        <Font name="System Bold" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
                </children></Pane>
-            <Pane fx:id="namePane" layoutX="33.0" layoutY="94.0" prefHeight="965.0" prefWidth="729.0" style="-fx-background-color: grey;" visible="false">
+            <Pane fx:id="namePane" layoutX="33.0" layoutY="94.0" prefHeight="616.0" prefWidth="729.0" style="-fx-background-color: grey;" visible="false">
                <children>
-                  <Button fx:id="b1" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="42.0" mnemonicParsing="false" onAction="#b1Act" prefHeight="100.0" prefWidth="220.0" text="Button" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b1" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="33.0" mnemonicParsing="false" onAction="#b1Act" prefHeight="55.0" prefWidth="220.0" text="Button" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b2" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="42.0" mnemonicParsing="false" onAction="#b2Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b2" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="33.0" mnemonicParsing="false" onAction="#b2Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b3" alignment="CENTER" contentDisplay="CENTER" layoutX="488.0" layoutY="42.0" mnemonicParsing="false" onAction="#b3Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b3" alignment="CENTER" contentDisplay="CENTER" layoutX="488.0" layoutY="33.0" mnemonicParsing="false" onAction="#b3Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b6" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="153.0" mnemonicParsing="false" onAction="#b6Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b6" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="105.0" mnemonicParsing="false" onAction="#b6Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b5" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="153.0" mnemonicParsing="false" onAction="#b5Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b5" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="105.0" mnemonicParsing="false" onAction="#b5Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b4" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="153.0" mnemonicParsing="false" onAction="#b4Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b4" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="105.0" mnemonicParsing="false" onAction="#b4Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b10" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="376.0" mnemonicParsing="false" onAction="#b10Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b10" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="253.0" mnemonicParsing="false" onAction="#b10Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b11" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="376.0" mnemonicParsing="false" onAction="#b11Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b11" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="253.0" mnemonicParsing="false" onAction="#b11Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b12" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="376.0" mnemonicParsing="false" onAction="#b12Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b12" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="253.0" mnemonicParsing="false" onAction="#b12Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b9" alignment="CENTER" contentDisplay="CENTER" layoutX="488.0" layoutY="265.0" mnemonicParsing="false" onAction="#b9Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b9" alignment="CENTER" contentDisplay="CENTER" layoutX="488.0" layoutY="179.0" mnemonicParsing="false" onAction="#b9Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b8" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="265.0" mnemonicParsing="false" onAction="#b8Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b8" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="179.0" mnemonicParsing="false" onAction="#b8Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b7" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="265.0" mnemonicParsing="false" onAction="#b7Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b7" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="179.0" mnemonicParsing="false" onAction="#b7Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b19" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="712.0" mnemonicParsing="false" onAction="#b19Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b19" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="476.0" mnemonicParsing="false" onAction="#b19Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b20" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="712.0" mnemonicParsing="false" onAction="#b20Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b20" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="476.0" mnemonicParsing="false" onAction="#b20Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b21" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="712.0" mnemonicParsing="false" onAction="#b21Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b21" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="476.0" mnemonicParsing="false" onAction="#b21Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b24" alignment="CENTER" contentDisplay="CENTER" layoutX="486.0" layoutY="823.0" mnemonicParsing="false" onAction="#b24Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b24" alignment="CENTER" contentDisplay="CENTER" layoutX="486.0" layoutY="549.0" mnemonicParsing="false" onAction="#b24Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b23" alignment="CENTER" contentDisplay="CENTER" layoutX="253.0" layoutY="823.0" mnemonicParsing="false" onAction="#b23Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b23" alignment="CENTER" contentDisplay="CENTER" layoutX="253.0" layoutY="549.0" mnemonicParsing="false" onAction="#b23Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b22" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="823.0" mnemonicParsing="false" onAction="#b22Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b22" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="549.0" mnemonicParsing="false" onAction="#b22Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b16" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="600.0" mnemonicParsing="false" onAction="#b16Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b16" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="401.0" mnemonicParsing="false" onAction="#b16Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b17" alignment="CENTER" contentDisplay="CENTER" layoutX="253.0" layoutY="600.0" mnemonicParsing="false" onAction="#b17Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b17" alignment="CENTER" contentDisplay="CENTER" layoutX="253.0" layoutY="401.0" mnemonicParsing="false" onAction="#b17Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b18" alignment="CENTER" contentDisplay="CENTER" layoutX="486.0" layoutY="600.0" mnemonicParsing="false" onAction="#b18Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b18" alignment="CENTER" contentDisplay="CENTER" layoutX="486.0" layoutY="401.0" mnemonicParsing="false" onAction="#b18Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b15" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="489.0" mnemonicParsing="false" onAction="#b15Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b15" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="327.0" mnemonicParsing="false" onAction="#b15Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b14" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="489.0" mnemonicParsing="false" onAction="#b14Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b14" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="327.0" mnemonicParsing="false" onAction="#b14Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b13" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="489.0" mnemonicParsing="false" onAction="#b13Act" prefHeight="100.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
+                  <Button fx:id="b13" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="327.0" mnemonicParsing="false" onAction="#b13Act" prefHeight="55.0" prefWidth="220.0" text="Button" textOverrun="CENTER_WORD_ELLIPSIS" visible="false" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
                   <Button layoutY="-1.0" mnemonicParsing="false" onAction="#backToStage0" prefHeight="31.0" prefWidth="62.0" text="Назад" />
                </children>
             </Pane>
-            <Pane fx:id="modifyPane" layoutX="34.0" layoutY="93.0" prefHeight="965.0" prefWidth="729.0" style="-fx-background-color: grey;" visible="false">
+            <Pane fx:id="modifyPane" layoutX="34.0" layoutY="93.0" prefHeight="592.0" prefWidth="729.0" style="-fx-background-color: grey;" visible="false">
                <children>
                   <Button layoutX="85.0" layoutY="316.0" mnemonicParsing="false" onAction="#cancel" text="Отмена">
                      <font>
@@ -230,15 +227,18 @@
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="newWeightTF" layoutX="321.0" layoutY="111.0" />
-                        <CheckBox fx:id="mishCB" layoutX="368.0" layoutY="154.0" mnemonicParsing="false" text="в мешках" />
+                        <TextField fx:id="newWeightTF" layoutX="321.0" layoutY="111.0" onAction="#addToBasket" />
+                        <CheckBox fx:id="mishCB" layoutX="368.0" layoutY="154.0" mnemonicParsing="false" text="ОПТ">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></CheckBox>
                      </children>
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="basketPane" layoutX="34.0" layoutY="93.0" prefHeight="965.0" prefWidth="729.0" style="-fx-background-color: grey;" visible="false">
+            <Pane fx:id="basketPane" layoutX="34.0" layoutY="93.0" prefHeight="616.0" prefWidth="729.0" style="-fx-background-color: grey;" visible="false">
                <children>
-                  <TableView fx:id="basketTable" layoutX="16.0" layoutY="42.0" prefHeight="568.0" prefWidth="701.0">
+                  <TableView fx:id="basketTable" layoutX="16.0" layoutY="34.0" prefHeight="379.0" prefWidth="701.0">
                     <columns>
                       <TableColumn fx:id="basketName" prefWidth="306.0" text="Наименование" />
                       <TableColumn fx:id="basketWeight" prefWidth="207.0" text="Вес / шт." />
@@ -246,21 +246,21 @@
                     </columns>
                   </TableView>
                   <Button layoutY="-1.0" mnemonicParsing="false" onAction="#backOfBasket" prefHeight="31.0" prefWidth="62.0" text="Назад" />
-                  <Button layoutX="429.0" layoutY="742.0" mnemonicParsing="false" onAction="#createBooking" prefHeight="19.0" prefWidth="265.0" text="Оформить заказ">
+                  <Button layoutX="429.0" layoutY="528.0" mnemonicParsing="false" onAction="#createBooking" prefHeight="19.0" prefWidth="265.0" text="Оформить заказ">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Button>
-                  <Button layoutX="311.0" layoutY="635.0" mnemonicParsing="false" onAction="#resumeBasket" text="Аннулировать" />
-                  <Label fx:id="allPrice" alignment="CENTER" contentDisplay="CENTER" layoutX="531.0" layoutY="631.0" prefHeight="39.0" prefWidth="186.0" text="Сумма" textAlignment="CENTER">
+                  <Button layoutX="311.0" layoutY="421.0" mnemonicParsing="false" onAction="#resumeBasket" text="Аннулировать" />
+                  <Label fx:id="allPrice" alignment="CENTER" contentDisplay="CENTER" layoutX="529.0" layoutY="421.0" prefHeight="39.0" prefWidth="186.0" text="Сумма" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
-                  <Button layoutX="31.0" layoutY="635.0" mnemonicParsing="false" onAction="#skidActive" text="Скидка" />
-                  <Pane fx:id="skidPane" layoutX="31.0" layoutY="699.0" prefHeight="108.0" prefWidth="300.0" visible="false">
+                  <Button layoutX="31.0" layoutY="421.0" mnemonicParsing="false" onAction="#skidActive" text="Скидка" />
+                  <Pane fx:id="skidPane" layoutX="31.0" layoutY="485.0" prefHeight="108.0" prefWidth="300.0" visible="false">
                      <children>
-                        <TextField fx:id="skidTF" layoutX="22.0" layoutY="17.0" prefHeight="31.0" prefWidth="152.0" />
+                        <TextField fx:id="skidTF" layoutX="22.0" layoutY="17.0" onAction="#skidOk" prefHeight="31.0" prefWidth="152.0" />
                         <ChoiceBox fx:id="skidCB" layoutX="184.0" layoutY="17.0" prefHeight="31.0" prefWidth="95.0" />
                         <Button layoutX="111.0" layoutY="63.0" mnemonicParsing="false" onAction="#skidOk" text="Принять" />
                      </children>

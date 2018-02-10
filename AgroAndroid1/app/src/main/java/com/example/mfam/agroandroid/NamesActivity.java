@@ -13,6 +13,7 @@ public class NamesActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
+        System.setProperty("console.encoding","UTF-8");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_names);
 

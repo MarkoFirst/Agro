@@ -18,9 +18,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import classes.MyDataBase;
 import classes.MyStage;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import tables.BookingObj;
 import tables.Bookings;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -63,7 +68,7 @@ public class AllBookings implements Initializable {
     private TableColumn sellerTC, dateTC, allPriceTC, nameTC, weightTC, priceTC;
 
     @FXML
-    private Label summDay;
+    private Label summDay, excelLable;
 
     @FXML
     private DatePicker dayDT;
@@ -98,6 +103,7 @@ public class AllBookings implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        excelLable.setVisible(false);
         // устанавливаем тип и значение которое должно хранится в колонке
         sellerTC.setCellValueFactory(new PropertyValueFactory("seller"));
         allPriceTC.setCellValueFactory(new PropertyValueFactory("costAll"));
@@ -112,7 +118,8 @@ public class AllBookings implements Initializable {
         bookings.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                ObservableList dataBO = FXCollections.observableArrayList();
+                excelLable.setVisible(false);
+                dataBO = FXCollections.observableArrayList();
                 dopItem = data.get(bookings.getSelectionModel().getSelectedIndex()).getIdBooking();
                 if(dopItem < 1){ return; }
                 try {
@@ -135,10 +142,12 @@ public class AllBookings implements Initializable {
             }
         });
     }
+    ObservableList<BookingObj> dataBO;
 
     private int dopItem = 0;
 
     public void removeBooking(ActionEvent actionEvent) {
+        excelLable.setVisible(false);
         if(dopItem == 0){return;}
         try {
             MyDataBase mdb = new MyDataBase();
@@ -162,6 +171,7 @@ public class AllBookings implements Initializable {
     }
 
     public void thisDay(ActionEvent actionEvent) throws SQLException {
+        excelLable.setVisible(false);
         double sum = 0;
         int item = 0;
         for ( int i = 0; i < bookings.getItems().size(); i++) { bookings.getItems().clear(); }
@@ -187,5 +197,49 @@ public class AllBookings implements Initializable {
         if(sum>0) {
             summDay.setText((new BigDecimal(sum).setScale(1, RoundingMode.UP).doubleValue())  + " грн.");
         }
+    }
+
+    public void excel(ActionEvent actionEvent) throws IOException {
+
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet spreadsheet = workbook.createSheet("Storage");
+
+        for(int i = 0; i < dataBO.size()+1; i++){
+            Row row = spreadsheet.createRow(i);
+            if(i == 0){
+                Cell head0 = row.createCell(0);
+                Cell head1 = row.createCell(1);
+                Cell head2 = row.createCell(2);
+                Cell head3 = row.createCell(3);
+
+                head0.setCellValue("№");
+                head1.setCellValue("Наименование");
+                head2.setCellValue("Вес");
+                head3.setCellValue("Цена");
+            } else {
+                Cell newCell0 = row.createCell(0);
+                Cell newCell1 = row.createCell(1);
+                Cell newCell2 = row.createCell(2);
+                Cell newCell3 = row.createCell(3);
+
+                newCell0.setCellValue(i-1);
+                newCell1.setCellValue(dataBO.get(i-1).getName());
+                newCell2.setCellValue(dataBO.get(i-1).getWeight());
+                newCell3.setCellValue(dataBO.get(i-1).getPrice());
+            }
+        }
+        Row row = spreadsheet.createRow(dataBO.size()+1);
+        Cell newCell2 = row.createCell(2);
+        Cell newCell3 = row.createCell(3);
+        newCell2.setCellValue("Сумма");
+        newCell3.setCellValue(data.get(bookings.getSelectionModel().getSelectedIndex()).getCostAll());
+
+        FileOutputStream fileOut = new FileOutputStream("Заказ "+data.get(bookings.getSelectionModel().getSelectedIndex()).getCostAll()
+                +" "+data.get(bookings.getSelectionModel().getSelectedIndex()).getDate()
+                +" "+data.get(bookings.getSelectionModel().getSelectedIndex()).getIdBooking()+ ".xlsx");
+        workbook.write(fileOut);
+        fileOut.close();
+        excelLable.setVisible(true);
+
     }
 }

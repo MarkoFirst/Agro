@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 
 public class AddActivity extends AppCompatActivity {
@@ -22,6 +24,7 @@ public class AddActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.setProperty("console.encoding","Cp866");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
@@ -32,7 +35,7 @@ public class AddActivity extends AppCompatActivity {
         nameNow.setText(NamesActivity.nameBut);
 
         Client test = new Client();
-        test.execute("0&balance_shop&names& name = '"+NamesActivity.nameBut+"'");
+        test.execute("0&balance_shop&names& name = '"+ NamesActivity.nameBut+"'");
         weight.setText(test.getSp()[1]);
 
     }
@@ -54,7 +57,7 @@ public class AddActivity extends AppCompatActivity {
         }
         basketArr[basketArrItem][0] = NamesActivity.nameBut;
         basketArr[basketArrItem][1] = String.valueOf(newWeight.getText());
-        basketArr[basketArrItem][2] = String.valueOf(Double.valueOf(test.getSp()[1]) * Double.valueOf(String.valueOf(newWeight.getText())));
+        basketArr[basketArrItem][2] = String.valueOf(new BigDecimal(Double.valueOf(test.getSp()[1]) * Double.valueOf(String.valueOf(newWeight.getText()))).setScale(1, RoundingMode.UP).doubleValue());
         basketArrItem++;
 
         System.out.println("_______________________________"+Arrays.toString(test.getSp()));

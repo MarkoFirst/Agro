@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Add">
+<GridPane alignment="center" hgap="10" prefHeight="720.0" prefWidth="1031.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Add">
     <columnConstraints>
         <ColumnConstraints />
         <ColumnConstraints />
@@ -20,19 +20,20 @@
         <RowConstraints />
     </rowConstraints>
     <children>
-        <Pane prefHeight="1080.0" prefWidth="864.0">
+        <Pane prefHeight="709.0" prefWidth="1021.0">
          <children>
              <Button layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#menu" text="Меню" />
-            <Pane fx:id="pane1" layoutX="82.0" layoutY="149.0" prefHeight="59.0" prefWidth="701.0">
+            <Pane fx:id="pane1" layoutX="82.0" layoutY="149.0" prefHeight="59.0" prefWidth="820.0">
                <children>
                   <ChoiceBox fx:id="groupChoice" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="180.0" />
-                  <ChoiceBox fx:id="nameChoice" layoutX="209.0" layoutY="14.0" prefHeight="31.0" prefWidth="180.0" />
-                  <ChoiceBox fx:id="placeChoice" layoutX="407.0" layoutY="14.0" prefHeight="31.0" prefWidth="138.0" />
-                  <TextField fx:id="amount" layoutX="559.0" layoutY="14.0" prefHeight="31.0" prefWidth="128.0" />
+                  <ChoiceBox fx:id="nameChoice" layoutX="209.0" layoutY="14.0" prefHeight="31.0" prefWidth="166.0" />
+                  <ChoiceBox fx:id="placeChoice" layoutX="392.0" layoutY="14.0" prefHeight="31.0" prefWidth="138.0" />
+                  <TextField fx:id="amount" layoutX="688.0" layoutY="14.0" onAction="#next" prefHeight="31.0" prefWidth="128.0" />
                   <TextField fx:id="newNameTF" layoutX="206.0" layoutY="14.0" visible="false" />
+                  <ChoiceBox fx:id="placeChoiceIn" layoutX="540.0" layoutY="14.0" prefHeight="31.0" prefWidth="138.0" />
                </children>
             </Pane>
-            <Pane layoutX="82.0" layoutY="239.0" prefHeight="59.0" prefWidth="701.0">
+            <Pane layoutX="160.0" layoutY="232.0" prefHeight="59.0" prefWidth="701.0">
                <children>
                   <Button layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#next" text="Еще">
                      <font>
@@ -54,27 +55,27 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="299.0" layoutY="114.0" text="Наименование">
+            <Label layoutX="288.0" layoutY="114.0" text="Наименование">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="525.0" layoutY="114.0" text="Место">
+            <Label layoutX="511.0" layoutY="114.0" text="Место">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="641.0" layoutY="114.0" text="Количество">
+            <Label layoutX="768.0" layoutY="114.0" text="Количество">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="783.0" layoutY="164.0" text="кг / шт">
+            <Label layoutX="923.0" layoutY="164.0" text="кг / шт">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Pane fx:id="pricePane" layoutX="199.0" layoutY="298.0" prefHeight="281.0" prefWidth="446.0" visible="false">
+            <Pane fx:id="pricePane" layoutX="288.0" layoutY="304.0" prefHeight="281.0" prefWidth="446.0" visible="false">
                <children>
                   <TextField fx:id="priceInTF" layoutX="204.0" layoutY="36.0" />
                   <TextField fx:id="priceOutTF" layoutX="204.0" layoutY="100.0" />
@@ -85,6 +86,11 @@
                   <TextField fx:id="priceMeshTF" layoutX="204.0" layoutY="164.0" />
                </children>
             </Pane>
+            <Label layoutX="647.0" layoutY="114.0" text="Откуда">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children></Pane>
     </children>
 </GridPane>

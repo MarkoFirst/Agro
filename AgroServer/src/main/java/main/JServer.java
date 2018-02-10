@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class JServer extends javax.swing.JFrame {
+    
 
     public JServer() {
         initComponents();
@@ -65,6 +66,8 @@ public class JServer extends javax.swing.JFrame {
 
     public static void main(String args[]) throws InterruptedException, InvocationTargetException {
         
+        System.setProperty("console.encoding","Cp866");
+        
         java.awt.EventQueue.invokeAndWait (new Runnable() {
             public void run() {
                 new JServer().setVisible(true);
@@ -73,6 +76,8 @@ public class JServer extends javax.swing.JFrame {
      try {
 
             while (true) {
+                
+                System.setProperty("console.encoding","Cp866");
 
                 ss = new ServerSocket(27016);
 
@@ -82,7 +87,7 @@ public class JServer extends javax.swing.JFrame {
                 s = ss.accept();
                 isr = new InputStreamReader(s.getInputStream());
                 br = new BufferedReader(isr);
-                message = br.readLine();
+                message = new String(br.readLine().getBytes(), "UTF-8");
 
                  jTextArea1.append("\n" + message);
 
@@ -112,8 +117,14 @@ public class JServer extends javax.swing.JFrame {
             if(arrMessage[0].equals("0")){
                 newArr = selectDB(arrMessage[1], arrMessage[2], arrMessage[3]);
             } else if(arrMessage[0].equals("1")){
-                insertNewBooking(arrMessage[1], arrMessage[2], arrMessage[3], arrMessage[4]);
+                insertNewBooking(arrMessage[1], arrMessage[2], arrMessage[3], arrMessage[4], arrMessage[5]);
                 sentData("Заказ успешно добавлен!");
+                return;
+            } else if(arrMessage[0].equals("2")){
+                gerStorage();
+                return;
+            } else if(arrMessage[0].equals("3")){
+                newAdd(arrMessage[1], arrMessage[2], arrMessage[3], arrMessage[4]);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -125,9 +136,28 @@ public class JServer extends javax.swing.JFrame {
         sentData(result.toString());
     }
 
-    private static void insertNewBooking(String seller, String cost_all, String bookingCount, String basketArray) {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date();
+    private static void gerStorage() throws SQLException {
+        MyDataBase mdb = new MyDataBase();
+        Statement stmt = mdb.getConn().createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM names ORDER BY id_group");
+        String storage = "";
+        while (rs.next()) {
+            storage += rs.getString("name") + "&";
+            storage += rs.getString("price_out") + " / " + rs.getString("price_mesh") + "&";
+            storage += rs.getString("balance_shop") + "&";
+            storage += rs.getString("balance_stor") + "&";
+            storage += rs.getString("balance_manufacture") + "&";
+        }
+        rs.close();
+        stmt.close();
+        mdb.getCloseConn();
+        sentData(storage);
+    }
+
+    private static void insertNewBooking(String seller, String cost_all, String bookingCount, String basketArray, String date) {
+        System.setProperty("console.encoding","Cp866");
+        //DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        //Date date = new Date();
         String[] basketArr = basketArray.split("#");
         try {
             MyDataBase mdb = new MyDataBase();
@@ -142,7 +172,10 @@ public class JServer extends javax.swing.JFrame {
             stmt.execute("INSERT INTO booking(id_booking, id_seller, date, cost_all) " +
                     "VALUES( " + String.valueOf(id)+", "+
                     seller + ", " +
-                    "'"+dateFormat.format(date) + "'," +
+                    
+                    //"'"+dateFormat.format(date) + "'," +
+                    "'"+date + "'," +
+                    
                     cost_all + ")"
             );
 
@@ -202,6 +235,48 @@ public class JServer extends javax.swing.JFrame {
             oout.close();
 
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    private static void newAdd(String place, String name, String weight, String outPlace){
+        try {
+            MyDataBase mdb = new MyDataBase();
+            Statement stmt = mdb.getConn().createStatement();
+
+            if(place.equals("Магазин")){
+                place = "balance_shop";
+            } else if(place.equals("Склад")){
+                place = "balance_stor";
+            } else if(place.equals("Производство")){
+                place = "balance_manufacture";
+            }
+
+            if(outPlace.equals("Магазин")){
+                outPlace = "balance_shop";
+            } else if(outPlace.equals("Склад")){
+                outPlace = "balance_stor";
+            } else if(outPlace.equals("Производство")){
+                outPlace = "balance_manufacture";
+            }
+
+            String ifMinus = ", " + outPlace + " = (" + outPlace + " - " + weight+")";
+
+            if(outPlace.equals("Поставщик")){
+                ifMinus = "";
+            }
+
+            jTextArea1.append("\n"+"__________________"+ifMinus);
+
+            stmt.execute("UPDATE names SET "+
+                    place + " = "+place+" + " + weight +
+                    ifMinus +
+                    " WHERE name = '" + name+"'");
+
+            stmt.close();
+            mdb.getCloseConn();
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

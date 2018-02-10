@@ -19,6 +19,11 @@ repositories {
 dependencies{
     
     compile group: 'org.postgresql', name: 'postgresql', version: '42.1.4.jre6'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
+    compile group: 'org.apache.poi', name: 'poi', version: '3.11'
+    compile group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '2.6.0'
+
+
     // this dependency is only required when using UserJvmOptionsService
     // when using Oracle JDK
     // compile files("${System.properties['java.home']}/../lib/packager.jar")

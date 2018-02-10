@@ -21,7 +21,7 @@
    <children>
       <Pane prefHeight="400.0" prefWidth="375.0">
          <children>
-            <Button layoutX="111.0" layoutY="251.0" mnemonicParsing="false" onAction="#enter" prefHeight="71.0" prefWidth="154.0" text="Войти">
+            <Button focusTraversable="false" layoutX="111.0" layoutY="251.0" mnemonicParsing="false" onAction="#enter" prefHeight="71.0" prefWidth="154.0" text="Войти">
                <font>
                   <Font name="Times New Roman Bold" size="30.0" />
                </font></Button>
@@ -30,7 +30,7 @@
                   <Font name="Times New Roman" size="28.0" />
                </font>
             </Label>
-            <TextField fx:id="enterInput" layoutX="64.0" layoutY="156.0">
+            <TextField fx:id="enterInput" layoutX="64.0" layoutY="156.0" onAction="#enter">
                <font>
                   <Font size="20.0" />
                </font></TextField>

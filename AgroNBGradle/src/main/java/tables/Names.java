@@ -13,17 +13,19 @@ public class Names {
     private String price_in;
     private String price_out;
     private String balanceStorage;
+    private String balanceMan;
     private String balanceShop;
 
     public Names() {
     }
 
-    public Names(String name, String group, String price_in, String price_out, String balanceStorage, String balanceShop) {
+    public Names(String name, String group, String price_in, String price_out, String balanceStorage, String balanceMan, String balanceShop) {
         this.name = name;
         this.group = group;
         this.price_in = price_in;
         this.price_out = price_out;
         this.balanceStorage = balanceStorage;
+        this.balanceMan = balanceMan;
         this.balanceShop = balanceShop;
     }
 
@@ -45,6 +47,10 @@ public class Names {
 
     public String getBalanceStorage() {
         return balanceStorage;
+    }
+    
+    public String getBalanceMan() {
+        return balanceMan;
     }
 
     public String getBalanceShop() {

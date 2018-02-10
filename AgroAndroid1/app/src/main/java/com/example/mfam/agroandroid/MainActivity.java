@@ -8,16 +8,31 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     public static String seller;
+    public static String day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+
+        day = String.valueOf(dateFormat.format(date));
+        System.out.println(day);
+        System.setProperty("console.encoding","Cp866");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /*for(int i = 0; i<5; i++){
+            Client test = new Client();
+            test.execute("0&id_seller&seller& id_seller = 1");
+        }
+        */
     }
 
     public void enter(View v){

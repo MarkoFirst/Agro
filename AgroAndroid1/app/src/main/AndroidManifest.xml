@@ -45,5 +45,19 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".StorageActivity">
+            <intent-filter>
+                <action android:name="com.example.mfam.agroandroid.StorageActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AddStorActivity">
+            <intent-filter>
+                <action android:name="com.example.mfam.agroandroid.AddStorActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

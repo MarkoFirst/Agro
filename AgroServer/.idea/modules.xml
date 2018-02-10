@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AgroServer.iml" filepath="$PROJECT_DIR$/AgroServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AgroServer_main.iml" filepath="$PROJECT_DIR$/.idea/modules/AgroServer_main.iml" group="AgroServer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AgroServer_test.iml" filepath="$PROJECT_DIR$/.idea/modules/AgroServer_test.iml" group="AgroServer" />
+    </modules>
+  </component>
+</project>

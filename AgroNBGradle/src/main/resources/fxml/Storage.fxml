@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" prefHeight="1090.0" prefWidth="904.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Storage">
+<GridPane alignment="center" hgap="10" prefHeight="720.0" prefWidth="1035.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Storage">
     <columnConstraints>
         <ColumnConstraints />
         <ColumnConstraints />
@@ -21,20 +19,23 @@
         <RowConstraints />
     </rowConstraints>
     <children>
-        <Pane prefHeight="1080.0" prefWidth="900.0">
+        <Pane prefHeight="702.0" prefWidth="1006.0">
             <children>
-                <Button layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#menu" text="Меню" />
-                <TableView fx:id="storageTableView" layoutX="-1.0" layoutY="87.0" prefHeight="972.0" prefWidth="900.0">
+                <Button layoutX="34.0" layoutY="26.0" mnemonicParsing="false" onAction="#menu" text="Меню" />
+                <TableView fx:id="storageTableView" layoutX="-1.0" layoutY="75.0" prefHeight="637.0" prefWidth="1006.0">
                     <columns>
                         <TableColumn fx:id="name" prefWidth="223.0" style="-fx-font-weight: bold;" text="Наименование" />
                         <TableColumn fx:id="group" prefWidth="107.0" text="Группа" />
                         <TableColumn fx:id="price_in" prefWidth="126.0" style="-fx-alignment: center;" text="Цена (приход)" />
-                        <TableColumn fx:id="price_out" prefWidth="126.0" style="-fx-alignment: center;" text="Цена (продажа)" />
-                        <TableColumn fx:id="balanceStorage" prefWidth="159.0" style="-fx-alignment: center;" text="Остаток (склад)" />
-                        <TableColumn fx:id="balanceShop" prefWidth="159.0" style="-fx-alignment: center;" text="Остаток (магазин)" />
+                        <TableColumn fx:id="price_out" prefWidth="126.0" style="-fx-alignment: center;" text="Цена" />
+                        <TableColumn fx:id="balanceStorage" prefWidth="157.0" style="-fx-alignment: center;" text="Склад" />
+                        <TableColumn fx:id="balanceMan" prefWidth="139.0" style="-fx-alignment: center;" text="Производство" />
+                        <TableColumn fx:id="balanceShop" prefWidth="144.0" style="-fx-alignment: center;" text="Магазин" />
                     </columns>
                 </TableView>
-                <Button layoutX="781.0" layoutY="36.0" mnemonicParsing="false" onAction="#add" text="Добавить" />
+                <Button layoutX="899.0" layoutY="26.0" mnemonicParsing="false" onAction="#addNew" text="Добавить" />
+            <Button layoutX="477.0" layoutY="26.0" mnemonicParsing="false" onAction="#excel" text="Excel" />
+            <Label fx:id="excelLable" layoutX="556.0" layoutY="31.0" text="Добавлено!" visible="false" />
             </children>
         </Pane>
     </children>

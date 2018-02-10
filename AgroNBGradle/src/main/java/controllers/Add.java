@@ -44,8 +44,8 @@ public class Add implements Initializable {
         pricePane.setVisible(false);
         add();
         changeStage(stage, "Storage", "Склад");
+        menuOut.hide();
         try {
-            menuOut.hide();
             StorageStage.hide();
         } catch (Exception e){
 
@@ -69,19 +69,25 @@ public class Add implements Initializable {
                 }
                 double shop = 0;
                 double stor = 0;
-                if(placeActive == "balance_shop"){
+                double man = 0;
+
+                if(placeActive.equals("balance_shop")){
                     shop = Double.valueOf(amount.getText());
-                } else {
+                } else if(placeActive.equals("balance_stor")){
                     stor = Double.valueOf(amount.getText());
+                } else {
+                    man = Double.valueOf(amount.getText());
                 }
-                stmt.execute("INSERT INTO names (name, id_group, price_in, price_out, balance_shop, balance_stor) " +
+                stmt.execute("INSERT INTO names (name, id_group, price_in, price_out,price_mesh, balance_shop, balance_stor, balance_manufacture) " +
                         "VALUES(" +
                         "'"+newNameTF.getText()+"', " +
                         ""+groupId+", " +
                         "0, "+
                         "0, "+
+                        "0, "+
                         ""+shop+", "+
-                        ""+stor+")"
+                        ""+stor+", "+
+                        ""+man+")"
                 );
                 nameActive = newNameTF.getText();
                 System.out.println(groupActive);
@@ -91,7 +97,14 @@ public class Add implements Initializable {
                 triger = false;
                 newNameTF.setText("");
             } else {
-                stmt.execute("UPDATE names SET " + placeActive + "=" + placeActive + "+" + amount.getText() + " WHERE name = '" + nameActive + "';");
+                String stringForPlace = " ";
+                if(!placeActiveIn.equals("")){
+                    stringForPlace = ", "+placeActiveIn+" = "+placeActiveIn+" - " + amount.getText();
+                }
+                stmt.execute("UPDATE names " +
+                        "SET " + placeActive + "=" + placeActive + "+" + amount.getText() +
+                        stringForPlace +
+                        "WHERE name = '" + nameActive + "';");
             }
             mdb.getCloseConn();
             stmt.close();
@@ -102,15 +115,16 @@ public class Add implements Initializable {
     }
     String nameActive;
     String placeActive = "balance_stor";
+    String placeActiveIn = "balance_stor";
     String groupActive = "Зерновые";
 
     MyStage stage = new MyStage();
 
     @FXML
-    public static Stage AddStage;
+    static Stage AddStage;
 
     @FXML
-    ChoiceBox groupChoice, nameChoice, placeChoice;
+    ChoiceBox groupChoice, nameChoice, placeChoice, placeChoiceIn;
 
     @FXML
     TextField amount, newNameTF, priceInTF, priceOutTF, priceMeshTF;
@@ -133,8 +147,12 @@ public class Add implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        placeChoice.setItems(FXCollections.observableArrayList("Склад", "Магазин"));
+        System.setProperty("console.encoding","Cp866");
+        placeChoice.setItems(FXCollections.observableArrayList("Склад", "Магазин", "Производство"));
         placeChoice.getSelectionModel().selectFirst();
+
+        placeChoiceIn.setItems(FXCollections.observableArrayList("Склад", "Производство", "Поставщик", "Магазин"));
+        placeChoiceIn.getSelectionModel().selectFirst();
 
         String[] groupNames = new String[10];
         try {
@@ -195,8 +213,26 @@ public class Add implements Initializable {
                 pricePane.setVisible(false);
                 if(Objects.equals(String.valueOf(placeChoice.getItems().get((Integer) number2)), "Склад")){
                     placeActive = "balance_stor";
-                } else {
+                } else if(Objects.equals(String.valueOf(placeChoice.getItems().get((Integer) number2)), "Магазин")){
                     placeActive = "balance_shop";
+                } else {
+                    placeActive = "balance_manufacture";
+                }
+            }
+        });
+        placeChoiceIn.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
+                pricePane.setVisible(false);
+                if(Objects.equals(String.valueOf(placeChoiceIn.getItems().get((Integer) number2)), "Склад")){
+                    placeActiveIn = "balance_stor";
+                } else if(Objects.equals(String.valueOf(placeChoiceIn.getItems().get((Integer) number2)), "Производство")){
+                    placeActiveIn = "balance_manufacture";
+                } else if(Objects.equals(String.valueOf(placeChoiceIn.getItems().get((Integer) number2)), "Магазин")){
+                    placeActiveIn = "balance_shop";
+                } else {
+                    placeActiveIn = "";
                 }
             }
         });
@@ -238,7 +274,7 @@ public class Add implements Initializable {
         Statement s = mdb.getConn().createStatement();
         s.execute("UPDATE names SET "+
                 "price_in =  " + priceInTF.getText()+
-                ", price_out =  " + priceInTF.getText()+
+                ", price_out =  " + priceOutTF.getText()+
                 ", price_mesh =  " + priceMeshTF.getText()+
                 "WHERE name = '" + nameActive +"'");
         mdb.getCloseConn();
@@ -260,6 +296,9 @@ public class Add implements Initializable {
             priceOutTF.setText(rs.getString("price_out"));
             priceMeshTF.setText(rs.getString("price_mesh"));
         }
+        if(priceInTF.getText().equals("")){priceInTF.setText("0.00");}
+        if(priceOutTF.getText().equals("")){priceInTF.setText("0.00");}
+        if(priceMeshTF.getText().equals("")){priceInTF.setText("0.00");}
         mdb.getCloseConn();
         s.close();
     }

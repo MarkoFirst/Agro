@@ -15,6 +15,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;
 
+import static com.example.mfam.agroandroid.MainActivity.day;
+
 public class BasketActivity extends AppCompatActivity {
 
     TableLayout basketTable;
@@ -25,6 +27,7 @@ public class BasketActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.setProperty("console.encoding","Cp866");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basket);
 
@@ -94,7 +97,8 @@ public class BasketActivity extends AppCompatActivity {
             basketStrArray += AddActivity.basketArr[i][2]+"#";
         }
         Client test = new Client();
-        test.execute("1&"+MainActivity.seller+"&"+(new BigDecimal(Double.valueOf(sum-skid)).setScale(1, RoundingMode.UP).doubleValue())+"&"+ AddActivity.basketArrItem+"&"+basketStrArray);
+
+        test.execute("1&"+MainActivity.seller+"&"+(new BigDecimal(Double.valueOf(sum-skid)).setScale(1, RoundingMode.UP).doubleValue())+"&"+ AddActivity.basketArrItem+"&"+basketStrArray+"&"+day);
 
         Toast.makeText(getApplicationContext(),""+test.getSp()[1], Toast.LENGTH_LONG).show();
 

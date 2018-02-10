@@ -5,17 +5,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import static com.example.mfam.agroandroid.MainActivity.day;
 
 public class GroupActivity extends AppCompatActivity {
 
     public static int group = 0;
+    EditText dateET;
 
     TextView sumDay;
     Button basketBtn;
@@ -24,6 +27,13 @@ public class GroupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group);
+        System.setProperty("console.encoding","Cp866");
+
+        dateET = (EditText) findViewById(R.id.dateET);
+
+        dateET.setText(String.valueOf(day));
+
+
 
         TextView sellerTV = (TextView) findViewById(R.id.sellerTV);
 
@@ -55,11 +65,8 @@ public class GroupActivity extends AppCompatActivity {
 
     public void summDay(View v){
 
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date();
-
         Client test = new Client();
-        test.execute("0&cost_all&booking& date = '"+dateFormat.format(date)+"'");
+        test.execute("0&cost_all&booking& date = '"+day+"'");
 
         double sum = 0;
         for(int i = 1; i < test.getSp().length; i++){
@@ -74,10 +81,30 @@ public class GroupActivity extends AppCompatActivity {
         startActivity(new Intent("com.example.mfam.agroandroid.BasketActivity"));
     }
 
+    public void goToStorage(View v){
+        startActivity(new Intent("com.example.mfam.agroandroid.StorageActivity"));
+    }
+
     public void exit(View v){
         Intent i = new Intent(this, MainActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
+
+    boolean dateC = false;
+    public void dateChange(View v){
+
+        if(dateC){
+            day = String.valueOf(dateET.getText());
+            dateET.setVisibility(View.INVISIBLE);
+            dateC = false;
+        } else {
+            dateET.setVisibility(View.VISIBLE);
+            dateC = true;
+        }
+
+    }
+
+
 
 }

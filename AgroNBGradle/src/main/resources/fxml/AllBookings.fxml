@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AllBookings">
+<GridPane alignment="center" hgap="10" prefHeight="720.0" prefWidth="940.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AllBookings">
     <columnConstraints>
         <ColumnConstraints />
         <ColumnConstraints />
@@ -24,33 +24,35 @@
         <Pane prefHeight="1080.0" prefWidth="930.0">
             <children>
                 <Button layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#menu" text="Меню" />
-                <TableView fx:id="bookings" layoutX="13.0" layoutY="87.0" prefHeight="972.0" prefWidth="485.0">
+                <TableView fx:id="bookings" layoutX="13.0" layoutY="80.0" prefHeight="624.0" prefWidth="485.0">
                     <columns>
                         <TableColumn fx:id="sellerTC" prefWidth="223.0" text="Продал" />
                         <TableColumn fx:id="allPriceTC" prefWidth="107.0" text="Сумма" />
                   <TableColumn fx:id="dateTC" prefWidth="154.0" text="Дата" />
                     </columns>
                 </TableView>
-            <Pane layoutX="514.0" layoutY="33.0" prefHeight="757.0" prefWidth="419.0">
+            <Pane layoutX="514.0" layoutY="33.0" prefHeight="672.0" prefWidth="419.0">
                <children>
-                  <TableView fx:id="bookingObj" layoutX="4.0" layoutY="54.0" prefHeight="703.0" prefWidth="418.0">
+                  <TableView fx:id="bookingObj" layoutX="4.0" layoutY="47.0" prefHeight="556.0" prefWidth="418.0">
                     <columns>
                       <TableColumn fx:id="nameTC" prefWidth="150.0" text="Наименование" />
                       <TableColumn fx:id="weightTC" minWidth="0.0" prefWidth="135.0" text="Вес" />
                         <TableColumn fx:id="priceTC" prefWidth="132.0" text="Цена" />
                     </columns>
                   </TableView>
+                  <Button layoutX="116.0" layoutY="613.0" mnemonicParsing="false" onAction="#removeBooking" text="Удалить заказ">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="418.0" text="Заказ">
                      <font>
                         <Font name="System Bold" size="31.0" />
                      </font>
                   </Label>
+                  <Button layoutX="22.0" layoutY="621.0" mnemonicParsing="false" onAction="#excel" text="Excel" />
+                  <Label fx:id="excelLable" layoutX="329.0" layoutY="623.0" text="Добавлено!" visible="false" />
                </children></Pane>
-            <Button layoutX="632.0" layoutY="817.0" mnemonicParsing="false" onAction="#removeBooking" text="Удалить заказ">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
             <DatePicker fx:id="dayDT" layoutX="330.0" layoutY="36.0" onAction="#thisDay" prefHeight="31.0" prefWidth="167.0" />
             <Label fx:id="summDay" layoutX="109.0" layoutY="29.0" prefHeight="45.0" prefWidth="212.0">
                <font>
