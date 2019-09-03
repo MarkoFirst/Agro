@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,11 +18,14 @@ public class MainActivity extends AppCompatActivity {
 
     public static String seller;
     public static String day;
+    EditText ipET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
+
+        ipET = (EditText) findViewById(R.id.ipET);
 
         day = String.valueOf(dateFormat.format(date));
         System.out.println(day);
@@ -41,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-
         try {
             Client test = new Client();
+            //test.setIp(ipET.getText().toString());
             test.execute("0&id_seller&seller& pass = '"+pass.getText().toString()+"'");
             pass.setText("");
             if(test.getSp().length>1) {

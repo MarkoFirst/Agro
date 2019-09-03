@@ -17,6 +17,10 @@ public class Client extends AsyncTask<String, String[], String[]> {
     private String[] sp;
     private String ip = "192.168.1.102";
 
+    public void setIp(String ip){
+        this.ip = ip;
+    }
+
     public String[] getSp(){
 
         //int timeOut = 0;

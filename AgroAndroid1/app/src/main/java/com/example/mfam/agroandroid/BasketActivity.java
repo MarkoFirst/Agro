@@ -1,6 +1,7 @@
 package com.example.mfam.agroandroid;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -36,6 +37,10 @@ public class BasketActivity extends AppCompatActivity {
 
         for(int i = 0; i < AddActivity.basketArrItem; i++) {
             TableRow newRow = new TableRow(this);
+
+            if (i % 2 == 0) {
+                newRow.setBackgroundColor(Color.rgb(177, 194, 221));
+            }
 // add views to the row
             TextView n = new TextView(this);
             TextView w = new TextView(this);

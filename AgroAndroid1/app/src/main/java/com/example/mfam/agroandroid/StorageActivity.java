@@ -28,12 +28,10 @@ public class StorageActivity extends AppCompatActivity {
         page = 1;
         item = 1;
 
-
         Client test = new Client();
         test.execute("2");
         storArr = test.getSp();
         initData();
-
     }
 
     private void initData(){
@@ -112,6 +110,10 @@ public class StorageActivity extends AppCompatActivity {
 
     public void goToAddStor(View v){
         startActivity(new Intent("com.example.mfam.agroandroid.AddStorActivity"));
+    }
+
+    public void backToMenu(View v){
+        startActivity(new Intent("com.example.mfam.agroandroid.GroupActivity"));
     }
 
 }

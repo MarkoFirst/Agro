@@ -73,7 +73,7 @@ public class GroupActivity extends AppCompatActivity {
             sum += Double.valueOf(test.getSp()[i]);
         }
 
-        sumDay.setText((new BigDecimal(Double.valueOf(sum)).setScale(1, RoundingMode.UP).doubleValue())+" грн.");
+        sumDay.setText((new BigDecimal(Double.valueOf(sum)).setScale(1, RoundingMode.UP).doubleValue())+" грн. / Заказов: " + (test.getSp().length-1));
 
     }
 

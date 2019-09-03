@@ -23,7 +23,7 @@ public class NamesActivity extends AppCompatActivity  {
         //Toast.makeText(getApplicationContext(),"ID = " + GroupActivity.group, Toast.LENGTH_LONG).show();
 
         Client test = new Client();
-        test.execute("0&name&names&id_group = "+GroupActivity.group);
+        test.execute("0&name&names&id_group = "+GroupActivity.group + " AND balance_shop > 0");
 
         String[] names = test.getSp();
 
