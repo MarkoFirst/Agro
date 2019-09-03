@@ -240,9 +240,10 @@
                <children>
                   <TableView fx:id="basketTable" layoutX="16.0" layoutY="34.0" prefHeight="379.0" prefWidth="701.0">
                     <columns>
-                      <TableColumn fx:id="basketName" prefWidth="306.0" text="Наименование" />
-                      <TableColumn fx:id="basketWeight" prefWidth="207.0" text="Вес / шт." />
-                        <TableColumn fx:id="basketCost" prefWidth="187.0" text="Цена" />
+                        <TableColumn fx:id="number" prefWidth="30.0" text="№" />
+                      <TableColumn fx:id="basketName" prefWidth="281.0" text="Наименование" />
+                      <TableColumn fx:id="basketWeight" prefWidth="234.0" text="Вес / шт." />
+                        <TableColumn fx:id="basketCost" prefWidth="155.0" text="Цена" />
                     </columns>
                   </TableView>
                   <Button layoutY="-1.0" mnemonicParsing="false" onAction="#backOfBasket" prefHeight="31.0" prefWidth="62.0" text="Назад" />

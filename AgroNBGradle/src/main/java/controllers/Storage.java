@@ -91,7 +91,7 @@ public class Storage implements Initializable {
     private void initData() throws SQLException {
         MyDataBase mdb = new MyDataBase();
         Statement s = mdb.getConn().createStatement();
-        ResultSet rs = s.executeQuery("SELECT * FROM names ORDER BY id_group");
+        ResultSet rs = s.executeQuery("SELECT * FROM names ORDER BY id_group, name");
         while (rs.next()) {
             data.add(new Names(
                     rs.getString("name"),

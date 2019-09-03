@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -33,6 +30,13 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import static controllers.Menu.menuOut;
@@ -65,21 +69,24 @@ public class AllBookings implements Initializable {
     private TableView bookings, bookingObj;
 
     @FXML
-    private TableColumn sellerTC, dateTC, allPriceTC, nameTC, weightTC, priceTC;
+    private TableColumn sellerTC, dateTC, allPriceTC, nameTC, weightTC, priceTC, numTC;
 
     @FXML
-    private Label summDay, excelLable;
+    private Label summDay, excelLable, bookingLabel;
 
     @FXML
-    private DatePicker dayDT;
+    private DatePicker dayDT, firstDayDT;
+
+    @FXML
+    private Button delBooking;
 
     private ObservableList<Bookings> data = FXCollections.observableArrayList();
 
     private void initData() throws SQLException {
-        int item = 0;
+        /*
         MyDataBase mdb = new MyDataBase();
         Statement s = mdb.getConn().createStatement();
-        ResultSet rs = s.executeQuery("SELECT * FROM booking");
+        ResultSet rs = s.executeQuery("SELECT * FROM booking WHERE ");
         while (rs.next()) {
             data.add(new Bookings(
                     rs.getInt("id_booking"),
@@ -87,17 +94,18 @@ public class AllBookings implements Initializable {
                     rs.getString("cost_all"),
                     rs.getString("date")
             ));
-            arrBookings[item] = rs.getInt("id_booking");
-            item++;
         }
         mdb.getCloseConn();
         s.close();
+        */
+        thisDay(null);
     }
-
-    private int[] arrBookings = new int[20];
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.setProperty("console.encoding","Cp866");
+        dayDT.setValue(LocalDate.now());
+        bookingLabel.setText("Заказ");
         try {
             initData();
         } catch (SQLException e) {
@@ -105,6 +113,7 @@ public class AllBookings implements Initializable {
         }
         excelLable.setVisible(false);
         // устанавливаем тип и значение которое должно хранится в колонке
+        numTC.setCellValueFactory(new PropertyValueFactory("num"));
         sellerTC.setCellValueFactory(new PropertyValueFactory("seller"));
         allPriceTC.setCellValueFactory(new PropertyValueFactory("costAll"));
         dateTC.setCellValueFactory(new PropertyValueFactory("date"));
@@ -118,6 +127,8 @@ public class AllBookings implements Initializable {
         bookings.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                bookingLabel.setText("Заказ");
+                delBooking.setVisible(true);
                 excelLable.setVisible(false);
                 dataBO = FXCollections.observableArrayList();
                 dopItem = data.get(bookings.getSelectionModel().getSelectedIndex()).getIdBooking();
@@ -126,11 +137,14 @@ public class AllBookings implements Initializable {
                     MyDataBase mdb = new MyDataBase();
                     Statement s = mdb.getConn().createStatement();
                     ResultSet rs = s.executeQuery("SELECT * FROM booking_dop WHERE id_booking = "+dopItem);
+                    int item = 0;
                     while (rs.next()) {
+                        item++;
                         dataBO.add(new BookingObj(
+                                item,
                                 BookingObj.getNameStr(rs.getInt("id_name")),
                                 rs.getDouble("weight"),
-                                rs.getDouble("cost_this")
+                                rs.getString("cost_this")
                         ));
                     }
                     mdb.getCloseConn();
@@ -147,11 +161,26 @@ public class AllBookings implements Initializable {
     private int dopItem = 0;
 
     public void removeBooking(ActionEvent actionEvent) {
+
+        System.out.println(" data size: " + dataBO.size());
+        for (int i = 0; i < dataBO.size(); i ++) {
+            System.out.println("name: " + dataBO.get(i).getName());
+            System.out.println("balance_shop: " + dataBO.get(i).getWeight());
+            System.out.println("__________________________________________________");
+        }
+
         excelLable.setVisible(false);
         if(dopItem == 0){return;}
         try {
             MyDataBase mdb = new MyDataBase();
             Statement s = mdb.getConn().createStatement();
+            for (int i = 0; i < dataBO.size(); i++) {
+                s.execute("UPDATE names SET " +
+                        " balance_shop = balance_shop + " + dataBO.get(i).getWeight() +
+                        " WHERE name = '" + dataBO.get(i).getName() + "'"
+                );
+            }
+
             s.execute("DELETE FROM booking_dop WHERE id_booking = " + dopItem);
             s.execute("DELETE FROM booking WHERE id_booking = " + dopItem);
             s.close();
@@ -168,26 +197,27 @@ public class AllBookings implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     public void thisDay(ActionEvent actionEvent) throws SQLException {
         excelLable.setVisible(false);
         double sum = 0;
-        int item = 0;
         for ( int i = 0; i < bookings.getItems().size(); i++) { bookings.getItems().clear(); }
         MyDataBase mdb = new MyDataBase();
         Statement s = mdb.getConn().createStatement();
-        ResultSet rs = s.executeQuery("SELECT * FROM booking WHERE date = '" + dayDT.getValue().toString()+"'");
+        ResultSet rs = s.executeQuery("SELECT * FROM booking WHERE date = '" + dayDT.getValue().toString()+"' ORDER BY id_booking");
+        int item = 1;
         while (rs.next()) {
             data.add(new Bookings(
                     rs.getInt("id_booking"),
+                    item,
                     getNameSeller(rs.getInt("id_seller")),
                     rs.getString("cost_all"),
                     rs.getString("date")
             ));
-            sum += rs.getDouble("cost_all");
-            arrBookings[item] = rs.getInt("id_booking");
             item++;
+            sum += rs.getDouble("cost_all");
         }
         mdb.getCloseConn();
         s.close();
@@ -203,6 +233,7 @@ public class AllBookings implements Initializable {
 
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet spreadsheet = workbook.createSheet("Storage");
+        double sum = 0;
 
         for(int i = 0; i < dataBO.size()+1; i++){
             Row row = spreadsheet.createRow(i);
@@ -215,31 +246,129 @@ public class AllBookings implements Initializable {
                 head0.setCellValue("№");
                 head1.setCellValue("Наименование");
                 head2.setCellValue("Вес");
-                head3.setCellValue("Цена");
+                if(bookingLabel.getText().equals("Заказ")) {
+                    head3.setCellValue("Цена");
+                } else {
+                    head3.setCellValue("Сумма");
+                }
             } else {
                 Cell newCell0 = row.createCell(0);
                 Cell newCell1 = row.createCell(1);
                 Cell newCell2 = row.createCell(2);
-                Cell newCell3 = row.createCell(3);
 
-                newCell0.setCellValue(i-1);
+                newCell0.setCellValue(i);
                 newCell1.setCellValue(dataBO.get(i-1).getName());
                 newCell2.setCellValue(dataBO.get(i-1).getWeight());
-                newCell3.setCellValue(dataBO.get(i-1).getPrice());
+
+//                if(bookingLabel.getText().equals("Заказ")) {
+                    Cell newCell3 = row.createCell(3);
+                    newCell3.setCellValue(dataBO.get(i-1).getPrice());
+
+                    sum += Double.parseDouble(dataBO.get(i-1).getPrice());
+//                }
             }
         }
-        Row row = spreadsheet.createRow(dataBO.size()+1);
-        Cell newCell2 = row.createCell(2);
-        Cell newCell3 = row.createCell(3);
-        newCell2.setCellValue("Сумма");
-        newCell3.setCellValue(data.get(bookings.getSelectionModel().getSelectedIndex()).getCostAll());
 
-        FileOutputStream fileOut = new FileOutputStream("Заказ "+data.get(bookings.getSelectionModel().getSelectedIndex()).getCostAll()
-                +" "+data.get(bookings.getSelectionModel().getSelectedIndex()).getDate()
-                +" "+data.get(bookings.getSelectionModel().getSelectedIndex()).getIdBooking()+ ".xlsx");
+        if(!bookingLabel.getText().equals("Заказ")) {
+            Row row = spreadsheet.createRow(dataBO.size()+1);
+
+            Cell newCell3 = row.createCell(3);
+            newCell3.setCellValue(sum);
+        }
+
+        String dop = "";
+        if(bookingLabel.getText().equals("Заказ")){
+            Row row = spreadsheet.createRow(dataBO.size()+1);
+            Cell newCell2 = row.createCell(2);
+            Cell newCell3 = row.createCell(3);
+            newCell2.setCellValue("Сумма");
+            newCell3.setCellValue(data.get(bookings.getSelectionModel().getSelectedIndex()).getCostAll());
+
+            dop = data.get(bookings.getSelectionModel().getSelectedIndex()).getCostAll()+" " +
+                    data.get(bookings.getSelectionModel().getSelectedIndex()).getIdBooking();
+        }
+
+        FileOutputStream fileOut = new FileOutputStream(bookingLabel.getText()+" "+dop
+                +" "+dayDT.getValue().toString() + ".xlsx");
         workbook.write(fileOut);
         fileOut.close();
         excelLable.setVisible(true);
 
+    }
+
+    public void inDay(ActionEvent actionEvent){
+        bookingLabel.setText("Продано за день");
+        delBooking.setVisible(false);
+        excelLable.setVisible(false);
+        dataBO = FXCollections.observableArrayList();
+        try {
+            MyDataBase mdb = new MyDataBase();
+            Statement s = mdb.getConn().createStatement();
+            ResultSet rs = s.executeQuery("SELECT id_name, SUM(weight) " +
+                    "FROM booking B, booking_dop D " +
+                    "WHERE B.id_booking = D.id_booking " +
+                        "AND B.date = '"+dayDT.getValue().toString()+"' " +
+                    "GROUP BY id_name " +
+                    "ORDER BY D.id_name "
+            );
+            int item = 0;
+            while (rs.next()) {
+                item++;
+                dataBO.add(new BookingObj(
+                        item,
+                        BookingObj.getNameStr(rs.getInt("id_name")),
+                        rs.getDouble("SUM"),
+                        ""
+                ));
+            }
+            mdb.getCloseConn();
+            s.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        bookingObj.setItems(dataBO);
+    }
+
+
+    public void forDays(ActionEvent actionEvent) {
+        bookingLabel.setText("Дни");
+        delBooking.setVisible(false);
+        excelLable.setVisible(false);
+        dataBO = FXCollections.observableArrayList();
+
+        String start = firstDayDT.getValue().toString();
+        String last = dayDT.getValue().toString();
+
+        try {
+            MyDataBase mdb = new MyDataBase();
+            Statement s = mdb.getConn().createStatement();
+            ResultSet rs = s.executeQuery("SELECT n.name, SUM(bd.weight) Вес, SUM(bd.cost_this) Цена " +
+                    "FROM booking b " +
+                    "left join booking_dop bd on bd.id_booking = b.id_booking " +
+                    "left join names n on n.id_names = bd.id_name " +
+                    "WHERE b.date between '" + start + "' and '" + last + "' " +
+                    "GROUP BY n.id_names " +
+                    "ORDER BY Вес DESC "
+            );
+
+            int item = 0;
+
+            while (rs.next()) {
+                item++;
+                dataBO.add(new BookingObj(
+                        item,
+                        rs.getString(1),
+                        rs.getDouble(2),
+                        rs.getString(3)
+                ));
+            }
+
+            mdb.getCloseConn();
+            s.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        bookingObj.setItems(dataBO);
     }
 }

@@ -58,6 +58,7 @@ public class Names {
     }
 
     public static String getGroupName(int id_group) throws SQLException {
+        System.setProperty("console.encoding","Cp866");
         MyDataBase mdb = new MyDataBase();
         Statement s = mdb.getConn().createStatement();
         ResultSet rs = s.executeQuery("SELECT group_name FROM group_name WHERE id_group = " + id_group);

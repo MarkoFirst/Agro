@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -19,6 +20,7 @@ import tables.BookingObj;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,11 +28,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 import static controllers.EnterControll.idSeller;
 import static controllers.Menu.menuOut;
 
-public class Booking {
+public class Booking  implements Initializable {
 
     public void menu(ActionEvent actionEvent) throws IOException {
         changeStage(stage, "Menu", "Меню");
@@ -49,6 +52,7 @@ public class Booking {
         groupPane.setVisible(false);
         modifyPane.setVisible(false);
 
+        number.setCellValueFactory(new PropertyValueFactory("number"));
         basketName.setCellValueFactory(new PropertyValueFactory("name"));
         basketWeight.setCellValueFactory(new PropertyValueFactory("weight"));
         basketCost.setCellValueFactory(new PropertyValueFactory("price"));
@@ -90,7 +94,7 @@ public class Booking {
         groupPane.setVisible(true);
         modifyPane.setVisible(false);
         price =price * Double.valueOf(newWeightTF.getText());
-        data.add(new BookingObj(addName, Double.valueOf(newWeightTF.getText()), price));
+        data.add(new BookingObj(bookingCount + 1, addName, Double.valueOf(newWeightTF.getText()), String.valueOf(price)));
         basketArr[bookingCount][0] = addName;
         basketArr[bookingCount][1] = newWeightTF.getText();
         basketArr[bookingCount][2] = String.valueOf(price);
@@ -113,7 +117,7 @@ public class Booking {
     private TableView basketTable;
 
     @FXML
-    private TableColumn basketName, basketCost, basketWeight;
+    private TableColumn number, basketName, basketCost, basketWeight;
 
     @FXML
     private Pane groupPane, namePane, modifyPane, basketPane, skidPane;
@@ -199,7 +203,7 @@ public class Booking {
         namePane.setVisible(true);
         MyDataBase mdb = new MyDataBase();
         Statement s = mdb.getConn().createStatement();
-        ResultSet rs = s.executeQuery("SELECT name FROM names WHERE id_group = "+String.valueOf(group));
+        ResultSet rs = s.executeQuery("SELECT name FROM names WHERE id_group = "+String.valueOf(group) + " AND balance_shop > 0 ORDER BY id_names");
         int i = 0;
         String[] dopNames = new String[24];
         while (rs.next()) {
@@ -316,6 +320,8 @@ public class Booking {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        backOfBasket(actionEvent);
     }
 
     @FXML
@@ -355,5 +361,10 @@ public class Booking {
         }
 
         allPrice.setText(newPrice + " грн. ");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.setProperty("console.encoding","Cp866");
     }
 }

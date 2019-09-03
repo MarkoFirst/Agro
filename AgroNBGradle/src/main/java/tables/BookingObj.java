@@ -7,17 +7,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class BookingObj {
+    private int number;
     private String name;
     private double weight;
-    private double price;
+    private String  price;
 
     public BookingObj(){}
 
-    public BookingObj(String name, double weight, double price){
+    public BookingObj(int number, String name, double weight, String price){
+        this.number = number;
         this.name = name;
         this.weight = weight;
         this.price = price;
     }
+
+    public int getNumber() { return number; }
 
     public String getName() {
         return name;
@@ -27,11 +31,16 @@ public class BookingObj {
         return weight;
     }
 
-    public double getPrice() {
+    public void setWeight(Double newWeight){
+        this.weight = newWeight;
+    }
+
+    public String getPrice() {
         return price;
     }
 
     public static String getNameStr(int id_name) throws SQLException {
+        System.setProperty("console.encoding","Cp866");
         MyDataBase mdb = new MyDataBase();
         Statement s = mdb.getConn().createStatement();
         ResultSet rs = s.executeQuery("SELECT name FROM names WHERE id_names = " + id_name);

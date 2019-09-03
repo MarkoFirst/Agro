@@ -9,6 +9,7 @@ public class MyDataBase {
     private Connection conn = null;
 
     public MyDataBase() throws SQLException {
+        System.setProperty("console.encoding","Cp866");
 
         try {
             Class.forName("org.postgresql.Driver");

@@ -102,6 +102,7 @@ public class Menu  implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.setProperty("console.encoding","Cp866");
         user.setText(name);
     }
 }
